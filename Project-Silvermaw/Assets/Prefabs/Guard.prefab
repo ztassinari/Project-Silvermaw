@@ -3083,7 +3083,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -3098,7 +3098,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -3111,8 +3111,8 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6349846989507491658}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
-  m_Radius: 0.5
+  m_AgentTypeID: 0
+  m_Radius: 0.35
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -3137,10 +3137,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd2562a10228994cb3bde22c180cca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolling: 0
+  targetPointIndex: -1
   agent: {fileID: 6065733148504030882}
-  patrolPointDeadzone: 0.01
+  patrolPointVerticalDeadzone: 1
+  patrolPointGroundDeadzone: 1
   modelAnimator: {fileID: 0}
   patrolType: 0
+  pingDirection: 1
   PatrolRoute:
   - {fileID: 0}
   - {fileID: 0}

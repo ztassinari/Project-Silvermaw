@@ -5,16 +5,17 @@ using UnityEngine.AI;
 
 public class NavMeshPatroller : MonoBehaviour
 {
-    private bool patrolling = false;
-    private int targetPointIndex = -1;
+	[SerializeField] private bool patrolling = false;
+    [SerializeField] private int targetPointIndex = -1;
     public NavMeshAgent agent = new NavMeshAgent();
-    public float patrolPointDeadzone = 0;
+	public float patrolPointVerticalDeadzone = 0;
+    public float patrolPointGroundDeadzone = 0;
     public Animator modelAnimator;
 
     public PatrolType patrolType = PatrolType.Loop;
 
-    //increments list iteration--will be negative or positive
-    private int pingDirection = 1;
+	//increments list iteration--will be negative or positive
+	[SerializeField] private int pingDirection = 1;
 
     public enum PatrolType
     {
@@ -29,6 +30,7 @@ public class NavMeshPatroller : MonoBehaviour
         {
             if (patrolling != value)
             {
+				patrolling = value;
                 //if value = true, start patrolling
                 if (value)
                 {
@@ -46,6 +48,16 @@ public class NavMeshPatroller : MonoBehaviour
     }
 
     public List<Transform> PatrolRoute = new List<Transform>();
+
+	bool reachedTargetPatrolPoint()
+	{
+		Transform target = PatrolRoute[targetPointIndex];
+		Vector2 groundPosition = new Vector2(transform.position.x, transform.position.z);
+		Vector2 targetGroundPosition = new Vector2(target.position.x, target.position.z);
+		float verticalDistance = Mathf.Abs(transform.position.y - target.position.y);
+		float groundDistance = (targetGroundPosition - groundPosition).magnitude;
+		return verticalDistance < patrolPointVerticalDeadzone && groundDistance < patrolPointGroundDeadzone;
+	}
 
     // Start is called before the first frame update
     void Start()
@@ -65,29 +77,31 @@ public class NavMeshPatroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        modelAnimator.SetBool("GuardWalk", true);
-        if (agent.remainingDistance <= patrolPointDeadzone)
-        {
-            switch (patrolType)
-            {
-                case PatrolType.Loop:
-                    targetPointIndex++;
-                    //modding the index by the array's count simulates looping 
-                    targetPointIndex = targetPointIndex % PatrolRoute.Count;
-                    break;
-                case PatrolType.PingPong:
-                    //if the beginning or end has been reached...
-                    if (targetPointIndex == 0 || targetPointIndex == PatrolRoute.Count - 1)
-                    {
-                        pingDirection *= -1;
-                    }
-                    targetPointIndex += pingDirection;
-                    break;
-            }
-            agent.SetDestination(PatrolRoute[targetPointIndex].position);
-            
-        }
-        Debug.DrawLine(transform.position, PatrolRoute[targetPointIndex].position, Color.cyan);
+		if(Patrolling)
+		{
+			modelAnimator.SetBool("GuardWalk", true);
+			if (reachedTargetPatrolPoint())
+			{
+				switch (patrolType)
+				{
+					case PatrolType.Loop:
+						targetPointIndex++;
+						//modding the index by the array's count simulates looping 
+						targetPointIndex = targetPointIndex % PatrolRoute.Count;
+						break;
+					case PatrolType.PingPong:
+						//if the beginning or end has been reached...
+						if (targetPointIndex == 0 || targetPointIndex == PatrolRoute.Count - 1)
+						{
+							pingDirection *= -1;
+						}
+						targetPointIndex += pingDirection;
+						break;
+				}
+				agent.SetDestination(PatrolRoute[targetPointIndex].position);
+			}
+			Debug.DrawLine(transform.position, PatrolRoute[targetPointIndex].position, Color.cyan);
+		}
     }
 
     //iterates through internal patrol route list

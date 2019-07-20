@@ -86,11 +86,11 @@ public class GuardBehavior : MonoBehaviour
 
         if (Physics.Raycast(interactPoint.position, interactPoint.forward, out RaycastHit hitInfo, stats.interactDistance, layerMask))
         {
-            Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
-            if (interactable != null)
+			Door door = hitInfo.collider.GetComponent<Door>();
+            if (door != null && !door.opened)
             {
                 Debug.Log("interactable found--Guard");
-                interactable.Interact(gameObject);
+				door.Interact(gameObject);
             }
         }
         Debug.DrawRay(interactPoint.position, interactPoint.forward * stats.interactDistance, Color.magenta);
