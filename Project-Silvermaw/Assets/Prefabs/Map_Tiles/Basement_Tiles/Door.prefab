@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 9141390654072670229}
   - component: {fileID: 3857165338336979476}
   - component: {fileID: 8349813345916224751}
+  - component: {fileID: 4952328713229817487}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -229,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a009bd35f7c83064393c85d4dfd2b4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshObstacle: {fileID: 4952328713229817487}
   hinge: {fileID: 9141390654074607315}
   openThreshold: 90
   opened: 0
@@ -245,6 +247,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07, y: 2.6666665, z: 1.3333333}
   m_Center: {x: 0, y: 1.3313761, z: 0}
+--- !u!208 &4952328713229817487
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141390654074607317}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.035, y: 1.3330001, z: 0.66700006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.3310001, z: 0}
+  m_TimeToStationary: 0
 --- !u!1 &9141390654074607319
 GameObject:
   m_ObjectHideFlags: 0
