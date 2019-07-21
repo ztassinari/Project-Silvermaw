@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         StartCoroutine(checkLuminance());
-    }
+	}
 
 
     void LateUpdate()
@@ -392,7 +392,7 @@ public class PlayerController : MonoBehaviour
 			diminishVal *= luminancDiminishingFactor;
 		}
 		luminance *= luminanceMultiplier;
-		Debug.Log("Luminance is " + luminance + " time: " + Time.time);
+		//Debug.Log("Luminance is " + luminance + " time: " + Time.time);
 
 		yield return checkLuminance();
     }
