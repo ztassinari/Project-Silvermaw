@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -38,8 +39,9 @@ public class PlayerController : MonoBehaviour
 
     [System.Serializable]
     public class LightSettings
-    { 
-        public float lightUpInterval;
+    {
+		public int maxLightsForLuminance;
+        public int luminanceCalcsPerFrame;
         public Transform lightCheckArea;
         public float maxCheckDistance;
         //layerIgnoreNumber is in checkLuminance
@@ -342,33 +344,45 @@ public class PlayerController : MonoBehaviour
 		//Sort luminance values in descending order
 		SortedDictionary<float, int> luminanceFactors = new SortedDictionary<float, int>(Comparer<float>.Create((x, y) => y.CompareTo(x)));
 
-        //for each light, determine if its paths are blocked to the player, 
-        foreach(Light l in FindObjectsOfType<Light>())
+		//for each light, determine if its paths are blocked to the player,
+		Collider[] objectsInRadius = Physics.OverlapSphere(lightSetting.lightCheckArea.position, lightSetting.maxCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Collide);
+		IEnumerable<Light> lightsInRadius = objectsInRadius.Select(collider => collider.GetComponent<Light>()).Where(light => light != null && light.enabled);
+		int lightsProcessed = 0;
+		foreach (Light l in lightsInRadius.OrderBy(light => (light.transform.position - lightSetting.lightCheckArea.position).magnitude))
         {
-            if (l.enabled)
+			++lightsProcessed;
+
+			//Stop calculating if we exceed the max number of lights allowed to contribute to luminance
+			if(lightsProcessed > lightSetting.maxLightsForLuminance)
+			{
+				break;
+			}
+
+            Vector3 rayDist = l.transform.position - lightSetting.lightCheckArea.position;
+            //Debug.DrawRay(lightSetting.lightCheckArea.position, rayDist);
+            //draw ray from lightsensor to light in question
+            if (Physics.Raycast(lightSetting.lightCheckArea.position, rayDist.normalized, out RaycastHit hitInfo, lightSetting.maxCheckDistance, layerMask))
             {
-                Vector3 rayDist = l.transform.position - lightSetting.lightCheckArea.position;
-                //Debug.DrawRay(lightSetting.lightCheckArea.position, rayDist);
-                //draw ray from lightsensor to light in question
-                if (Physics.Raycast(lightSetting.lightCheckArea.position, rayDist.normalized, out RaycastHit hitInfo, lightSetting.maxCheckDistance, layerMask))
+                //Debug.Log("Ray collided with " + hitInfo.transform.position + ", Light is at " + l.transform.position);
+                if (hitInfo.transform.position == l.transform.position)
                 {
-                    //Debug.Log("Ray collided with " + hitInfo.transform.position + ", Light is at " + l.transform.position);
-                    if (hitInfo.transform.position == l.transform.position)
-                    {
-						float lf = getLuminanceFactor(l, rayDist.magnitude);
-                        if (luminanceFactors.ContainsKey(lf))
-						{
-							luminanceFactors[lf] += 1;
-						}
-						else
-						{
-							luminanceFactors[lf] = 1;
-						}
-                    }
+					float lf = getLuminanceFactor(l, rayDist.magnitude);
+                    if (luminanceFactors.ContainsKey(lf))
+					{
+						luminanceFactors[lf] += 1;
+					}
+					else
+					{
+						luminanceFactors[lf] = 1;
+					}
                 }
-                //this isnt as gross as it seems. it yields until unity's base loop picks it up on the next frame.
-                yield return null;
             }
+
+			//After luminanceCalcsPerFrame calculations, yield until unity's base loop picks it up on the next frame.
+			if (lightsProcessed % lightSetting.luminanceCalcsPerFrame == 0)
+			{
+				yield return null;
+			}
         }
 		luminance = 0;
 		float diminishVal = 1;
@@ -378,7 +392,7 @@ public class PlayerController : MonoBehaviour
 			diminishVal *= luminancDiminishingFactor;
 		}
 		luminance *= luminanceMultiplier;
-		//Debug.Log("Luminance is " + luminance + " time: " + Time.time);
+		Debug.Log("Luminance is " + luminance + " time: " + Time.time);
 
 		yield return checkLuminance();
     }

@@ -93,9 +93,10 @@ MonoBehaviour:
   physSetting:
     downAccel: 0.5
   lightSetting:
-    lightUpInterval: 0
+    maxLightsForLuminance: 15
+    luminanceCalcsPerFrame: 5
     lightCheckArea: {fileID: 65531923910357613}
-    maxCheckDistance: 10000
+    maxCheckDistance: 20
   inputSetting:
     inputDelay: 0.01
     FORWARD_AXIS: Vertical
@@ -111,6 +112,7 @@ MonoBehaviour:
   coverCheck: {fileID: 7046658131046225172}
   luminancDiminishingFactor: 2
   luminanceMultiplier: 1
+  luminanceFalloff: 1.5
   luminance: 0
 --- !u!54 &616132736007661127
 Rigidbody:
