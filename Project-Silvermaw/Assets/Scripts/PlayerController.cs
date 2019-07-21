@@ -81,7 +81,15 @@ public class PlayerController : MonoBehaviour
     bool sneaking = false;
     bool sprinting = false;
 
-    public float luminance;
+	//Affects diminishing returns of lights' individual contribution to luminance
+	//Higher values mean faster diminishing returns
+	public float luminancDiminishingFactor = 2f;
+	//Overall multiplier to the player's luminance
+	public float luminanceMultiplier = 1.0f;
+	//The exponent for how much luminance decreases with distance from a light source
+	//1 is linear falloff, 2 is quadratic, etc.
+	public float luminanceFalloff = 1.5f;
+	public float luminance;
 
     //public Quaternion TargetRotation()
     //{
@@ -321,7 +329,7 @@ public class PlayerController : MonoBehaviour
 
     public float getLuminanceFactor(Light l, float distance)
     {
-        return (l.range * l.intensity) / (distance * distance);
+        return (l.range * l.intensity) / Mathf.Pow(distance, luminanceFalloff);
     }
 
     public IEnumerator checkLuminance()
@@ -330,9 +338,9 @@ public class PlayerController : MonoBehaviour
         const int ignoreLightLayer = 10;
         //this must be in binary.  ~ is bitwise not
         const int layerMask = ~(1<<ignoreLightLayer);
-        
 
-        float tempLuminance = 0;
+		//Sort luminance values in descending order
+		SortedDictionary<float, int> luminanceFactors = new SortedDictionary<float, int>(Comparer<float>.Create((x, y) => y.CompareTo(x)));
 
         //for each light, determine if its paths are blocked to the player, 
         foreach(Light l in FindObjectsOfType<Light>())
@@ -347,17 +355,31 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log("Ray collided with " + hitInfo.transform.position + ", Light is at " + l.transform.position);
                     if (hitInfo.transform.position == l.transform.position)
                     {
-                        //set var to highest luminance found
-                        tempLuminance = Mathf.Max(tempLuminance, getLuminanceFactor(l, rayDist.magnitude));
+						float lf = getLuminanceFactor(l, rayDist.magnitude);
+                        if (luminanceFactors.ContainsKey(lf))
+						{
+							luminanceFactors[lf] += 1;
+						}
+						else
+						{
+							luminanceFactors[lf] = 1;
+						}
                     }
                 }
                 //this isnt as gross as it seems. it yields until unity's base loop picks it up on the next frame.
                 yield return null;
             }
         }
-        luminance = tempLuminance;
-        //Debug.Log("Luminance is " + luminance + " time: " + Time.time);
+		luminance = 0;
+		float diminishVal = 1;
+        foreach(KeyValuePair<float, int> lf in luminanceFactors)
+		{
+			luminance += (lf.Key * lf.Value) / diminishVal;
+			diminishVal *= luminancDiminishingFactor;
+		}
+		luminance *= luminanceMultiplier;
+		//Debug.Log("Luminance is " + luminance + " time: " + Time.time);
 
-        yield return checkLuminance();
+		yield return checkLuminance();
     }
 }

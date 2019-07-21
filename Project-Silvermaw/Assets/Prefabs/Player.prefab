@@ -109,6 +109,8 @@ MonoBehaviour:
   sprintMod: 1.5
   interactDistance: 10
   coverCheck: {fileID: 7046658131046225172}
+  luminancDiminishingFactor: 2
+  luminanceMultiplier: 1
   luminance: 0
 --- !u!54 &616132736007661127
 Rigidbody:
