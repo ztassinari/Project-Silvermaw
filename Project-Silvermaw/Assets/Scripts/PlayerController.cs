@@ -135,41 +135,34 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(checkLuminance());
 	}
 
-
-    void LateUpdate()
-    {
-        const int ignoreRaycast = 2;
-        const int ignoreLightLayer = 10;
-        const int layerMask = ~((1 << ignoreLightLayer) | (1 << ignoreRaycast));
-        if (!gameController.paused)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hitInfo, interactDistance, layerMask))
-                {
-                    Debug.Log("Something, great.");
-                    Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
-                    if (interactable != null)
-                    {
-                        Debug.Log("interactable found");
-                        interactable.Interact(gameObject);
-                    }
-                }
-            }
-            if (Input.GetKey(KeyCode.E))
-            {
-                Debug.DrawRay(camera.transform.position, camera.transform.forward * interactDistance, Color.magenta);
-            }
-        }
-
-    }
-
-
     void GetInput()
     {
-        if (gameController.paused == false)
+		const int ignoreRaycast = 2;
+		const int ignoreLightLayer = 10;
+		const int layerMask = ~((1 << ignoreLightLayer) | (1 << ignoreRaycast));
+
+		if (gameController.paused == false)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+			if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hitInfo, interactDistance, layerMask))
+			{
+				Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
+				if (interactable != null)
+				{
+					interactable.Hover(gameObject);
+					if (Input.GetKey(KeyCode.E))
+					{
+						interactable.Interact(gameObject, Input.GetKeyDown(KeyCode.E));
+					}
+				}
+			}
+			if (Input.GetKey(KeyCode.E))
+			{
+				Debug.DrawRay(camera.transform.position, camera.transform.forward * interactDistance, Color.magenta);
+			}
+
+
+
+			Cursor.lockState = CursorLockMode.Locked;
 
             forwardInput = Input.GetAxis(inputSetting.FORWARD_AXIS);//interpolated (-1-1)
             strafeInput = Input.GetAxis(inputSetting.TURN_AXIS);
@@ -186,15 +179,13 @@ public class PlayerController : MonoBehaviour
             ToggleSprinting();
             anim.GetBool("CharRunOn").Equals(true);
         }
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            //switch the pause state
+		if (Input.GetKeyDown(KeyCode.LeftControl))
+		{
+			//switch the pause state
 
-            ToggleSneaking();
-        }
-
-
-    }
+			ToggleSneaking();
+		}
+	}
 
 
     // Update is called once per frame
@@ -346,7 +337,7 @@ public class PlayerController : MonoBehaviour
 
 		//for each light, determine if its paths are blocked to the player,
 		Collider[] objectsInRadius = Physics.OverlapSphere(lightSetting.lightCheckArea.position, lightSetting.maxCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Collide);
-		IEnumerable<Light> lightsInRadius = objectsInRadius.Select(collider => collider.GetComponent<Light>()).Where(light => light != null && light.enabled);
+		IEnumerable<Light> lightsInRadius = objectsInRadius.Select(collider => collider.GetComponentInChildren<Light>()).Where(light => light != null && light.enabled);
 		int lightsProcessed = 0;
 		foreach (Light l in lightsInRadius.OrderBy(light => (light.transform.position - lightSetting.lightCheckArea.position).magnitude))
         {

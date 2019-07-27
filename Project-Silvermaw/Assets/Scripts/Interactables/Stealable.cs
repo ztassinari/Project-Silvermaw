@@ -1,22 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Stealable : Interactable
+[RequireComponent(typeof(Interactable))]
+public class Stealable : MonoBehaviour
 {
     public int goldValue;
 
-    private void Start()
-    {
-        
-    }
+	private void Start()
+	{
+		GetComponent<Interactable>().OnInteract += Take;
+	}
 
-    private void Update()
-    {
-        
-    }
-
-    public override void Interact(GameObject subject)
+	public void Take(GameObject subject)
     {
         PlayerController player  = subject.GetComponent<PlayerController>();
 

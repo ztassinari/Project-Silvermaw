@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8819481977012473068}
   - component: {fileID: 8819481977015864524}
   - component: {fileID: 8819481977014767116}
-  - component: {fileID: 4269350076241845056}
   - component: {fileID: 4452966711196314522}
   - component: {fileID: 713960559580712593}
+  - component: {fileID: 2773637825456372183}
+  - component: {fileID: -2499733707244270317}
   m_Layer: 0
   m_Name: Coin_Gold
   m_TagString: Untagged
@@ -80,19 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &4269350076241845056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8819481977012768972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 874afc4144b79354c864e2450fda6d6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldValue: 1
 --- !u!65 &4452966711196314522
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,3 +110,48 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2773637825456372183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819481977012768972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c48be6706121f429fea77cf399140a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHover:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &-2499733707244270317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819481977012768972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874afc4144b79354c864e2450fda6d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldValue: 1

@@ -198,8 +198,9 @@ GameObject:
   - component: {fileID: 5482628294239745866}
   - component: {fileID: 5482628294238943082}
   - component: {fileID: 5482628294237975978}
-  - component: {fileID: 9133319519872504797}
   - component: {fileID: 2627014386040804352}
+  - component: {fileID: 6034076737154192734}
+  - component: {fileID: 8704432352503142529}
   m_Layer: 0
   m_Name: Chest Top
   m_TagString: Untagged
@@ -267,21 +268,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &9133319519872504797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5482628294239972202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a009bd35f7c83064393c85d4dfd2b4a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hinge: {fileID: 6335154833349186931}
-  openThreshold: 90
-  opened: 0
 --- !u!65 &2627014386040804352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -295,6 +281,54 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.040018052, z: 0.011090423}
   m_Center: {x: -0.000000014901161, y: -8.66931e-17, z: 0.0122009665}
+--- !u!114 &6034076737154192734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482628294239972202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c48be6706121f429fea77cf399140a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHover:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &8704432352503142529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482628294239972202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a009bd35f7c83064393c85d4dfd2b4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshObstacle: {fileID: 0}
+  hinge: {fileID: 6335154833349186931}
+  openThreshold: 90
+  opened: 0
 --- !u!1 &5482628294239972204
 GameObject:
   m_ObjectHideFlags: 0

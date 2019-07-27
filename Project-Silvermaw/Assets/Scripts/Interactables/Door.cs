@@ -1,17 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Door : Interactable
+[RequireComponent(typeof(Interactable))]
+public class Door : MonoBehaviour
 {
 	[SerializeField] private NavMeshObstacle navMeshObstacle = null;
     public GameObject hinge = null;
     public float openThreshold = 90;
     public bool opened = false;
 
+	private void Start()
+	{
+		GetComponent<Interactable>().OnInteract += Toggle;
+	}
 
-    public override void Interact(GameObject subject)
+	public void Toggle(GameObject subject)
     {
         if(opened)
         {

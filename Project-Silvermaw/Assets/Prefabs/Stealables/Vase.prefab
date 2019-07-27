@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2108528354888377133}
   - component: {fileID: 2108528354887246317}
   - component: {fileID: 492776943048824548}
-  - component: {fileID: 7736156196314437546}
+  - component: {fileID: 2773363255246691973}
+  - component: {fileID: 8845331214544044427}
   m_Layer: 0
   m_Name: Vase
   m_TagString: Untagged
@@ -93,7 +94,39 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: f620e5b0a4ee98d40a8650fdcbfbf1d8, type: 3}
---- !u!114 &7736156196314437546
+--- !u!114 &2773363255246691973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108528354885254957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c48be6706121f429fea77cf399140a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHover:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &8845331214544044427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

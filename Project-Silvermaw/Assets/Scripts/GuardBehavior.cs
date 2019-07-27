@@ -90,7 +90,7 @@ public class GuardBehavior : MonoBehaviour
             if (door != null && !door.opened)
             {
                 Debug.Log("interactable found--Guard");
-				door.Interact(gameObject);
+				door.Toggle(gameObject);
             }
         }
         Debug.DrawRay(interactPoint.position, interactPoint.forward * stats.interactDistance, Color.magenta);

@@ -1,14 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Drawer : Interactable
+[RequireComponent(typeof(Interactable))]
+public class Drawer : MonoBehaviour
 {
     public float openDist;
     public Vector3 openDir;
     public bool opened = false;
 
-    public override void Interact(GameObject subject)
+	private void Start()
+	{
+		GetComponent<Interactable>().OnInteract += Toggle;
+	}
+
+	public void Toggle(GameObject subject)
     {
         if (opened)
         {

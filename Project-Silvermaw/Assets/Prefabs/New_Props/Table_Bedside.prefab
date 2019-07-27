@@ -214,7 +214,8 @@ GameObject:
   - component: {fileID: 525015744277666427}
   - component: {fileID: 525015744278763707}
   - component: {fileID: 335425208104873657}
-  - component: {fileID: 7282703570798162685}
+  - component: {fileID: 6909175215568980831}
+  - component: {fileID: 1489743730718245215}
   m_Layer: 0
   m_Name: Draw_Top
   m_TagString: Untagged
@@ -295,7 +296,39 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.10089715, y: 0.9200001, z: 1.9664998}
   m_Center: {x: -1.1347735, y: 0.4999999, z: 0}
---- !u!114 &7282703570798162685
+--- !u!114 &6909175215568980831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525015744276825723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c48be6706121f429fea77cf399140a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHover:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1489743730718245215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,7 +355,8 @@ GameObject:
   - component: {fileID: 525015744277666429}
   - component: {fileID: 525015744278763709}
   - component: {fileID: 3790696318264599202}
-  - component: {fileID: 889402796476208172}
+  - component: {fileID: 3635390123206061995}
+  - component: {fileID: 4378901025364550672}
   m_Layer: 0
   m_Name: Draw_Bottom
   m_TagString: Untagged
@@ -403,7 +437,39 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08292158, y: 0.9200001, z: 1.9664998}
   m_Center: {x: -1.1437613, y: -0.4999999, z: 0}
---- !u!114 &889402796476208172
+--- !u!114 &3635390123206061995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525015744276825725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c48be6706121f429fea77cf399140a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHover:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &4378901025364550672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
