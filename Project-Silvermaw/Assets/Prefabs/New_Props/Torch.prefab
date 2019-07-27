@@ -14270,6 +14270,7 @@ GameObject:
   - component: {fileID: 6206653297684328227}
   - component: {fileID: 2624288084316146036}
   - component: {fileID: 1033983387970107308}
+  - component: {fileID: 2619739565929955957}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -14322,7 +14323,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onHoverEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2619739565929955957}
+        m_MethodName: EnableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onHover:
@@ -14332,7 +14344,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onHoverExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2619739565929955957}
+        m_MethodName: DisableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onInteract:
@@ -14360,7 +14383,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 2619739565929955957}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteractHold:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractHoldEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1033983387970107308
 MonoBehaviour:
@@ -14376,6 +14415,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Uses: 1
   Cost: 20
+--- !u!114 &2619739565929955957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841492892195988009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfe5c232e0cdcb4abdb5ac3a0a9cae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.14391243, g: 0.43678185, b: 0.6226415, a: 1}
+  IgnoreRenderers:
+  - {fileID: 3559743034104496665}
+  - {fileID: 3559743032761367036}
+  FadeInTime: 0.5
+  FadeOutTime: 0.1
+  progress: 0
+  goal: 0
 --- !u!1 &4841492892195988013
 GameObject:
   m_ObjectHideFlags: 0
