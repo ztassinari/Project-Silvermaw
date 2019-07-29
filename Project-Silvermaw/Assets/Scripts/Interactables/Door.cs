@@ -25,7 +25,10 @@ public class Door : MonoBehaviour
             transform.RotateAround(hinge.transform.position, hinge.transform.up, openThreshold);
 		}
         opened = !opened;
-		navMeshObstacle.enabled = opened;
+		if (navMeshObstacle != null)
+		{
+			navMeshObstacle.enabled = opened;
+		}
 	}
 
 }

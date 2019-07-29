@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3559743032761367037}
   - component: {fileID: 3559743032761367035}
   - component: {fileID: 3559743032761367036}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Additive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 3559743033325709687}
   - component: {fileID: 3559743033325709672}
   - component: {fileID: 3559743033325709673}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Torch_Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9517,7 +9517,7 @@ GameObject:
   - component: {fileID: 3559743034104496679}
   - component: {fileID: 3559743034104496664}
   - component: {fileID: 3559743034104496665}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Main_Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14267,11 +14267,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4841492892196027913}
-  - component: {fileID: 6206653297684328227}
+  - component: {fileID: 5266305070437629425}
   - component: {fileID: 2624288084316146036}
   - component: {fileID: 1033983387970107308}
   - component: {fileID: 2619739565929955957}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14296,19 +14296,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6206653297684328227
-SphereCollider:
+--- !u!65 &5266305070437629425
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841492892195988009}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 3, z: 3}
+  m_Center: {x: 1, y: 0, z: 0}
 --- !u!114 &2624288084316146036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14446,7 +14446,7 @@ GameObject:
   - component: {fileID: 4841492892196027917}
   - component: {fileID: 4841492892194733613}
   - component: {fileID: 4841492892193733869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14523,7 +14523,7 @@ GameObject:
   - component: {fileID: 4841492892196027919}
   - component: {fileID: 4841492892194733615}
   - component: {fileID: 4841492892193733871}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14599,6 +14599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8865165618018573752}
   - component: {fileID: 7920630652737223509}
+  - component: {fileID: 2490950299539572}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -14680,3 +14681,16 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!135 &2490950299539572
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390230010185756355}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

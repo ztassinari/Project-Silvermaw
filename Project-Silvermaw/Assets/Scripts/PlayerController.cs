@@ -138,8 +138,7 @@ public class PlayerController : MonoBehaviour
     void GetInput()
     {
 		const int ignoreRaycast = 2;
-		const int ignoreLightLayer = 10;
-		const int layerMask = ~((1 << ignoreLightLayer) | (1 << ignoreRaycast));
+		const int layerMask = ~(1 << ignoreRaycast);
 
 		if (gameController.paused == false)
         {
