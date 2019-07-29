@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8806943251719677617}
   - component: {fileID: 7286856834619643650}
   - component: {fileID: 5186181197491818684}
+  - component: {fileID: 3232240519683332304}
   m_Layer: 0
   m_Name: Door_Wood
   m_TagString: Untagged
@@ -124,24 +125,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onHoverEnter:
     m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Interactable+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+      m_Calls:
+      - m_Target: {fileID: 3232240519683332304}
+        m_MethodName: EnableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onHover:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Interactable+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onHoverExit:
     m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Interactable+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+      m_Calls:
+      - m_Target: {fileID: 3232240519683332304}
+        m_MethodName: DisableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   onInteract:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Interactable+Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteractHold:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractHoldEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &5186181197491818684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +186,24 @@ MonoBehaviour:
   hinge: {fileID: 5219960713676485750}
   openThreshold: 90
   opened: 0
+--- !u!114 &3232240519683332304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219960713676485744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfe5c232e0cdcb4abdb5ac3a0a9cae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+  IgnoreRenderers: []
+  FadeInTime: 0.25
+  FadeOutTime: 0.1
+  progress: 0
+  goal: 0
 --- !u!1 &5219960713676485746
 GameObject:
   m_ObjectHideFlags: 0

@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 2024371268087533893}
   - component: {fileID: 8656477181847397529}
   - component: {fileID: 5004107293999163865}
+  - component: {fileID: 2391947732825315862}
   m_Layer: 0
   m_Name: Drawer_Top
   m_TagString: Untagged
@@ -310,7 +311,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onHoverEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2391947732825315862}
+        m_MethodName: EnableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onHover:
@@ -320,13 +332,29 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onHoverExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2391947732825315862}
+        m_MethodName: DisableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onInteract:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteractHold:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractHoldEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &5004107293999163865
 MonoBehaviour:
@@ -343,6 +371,24 @@ MonoBehaviour:
   openDist: 0.35
   openDir: {x: 1, y: 0, z: 0}
   opened: 0
+--- !u!114 &2391947732825315862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697778123066049739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfe5c232e0cdcb4abdb5ac3a0a9cae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+  IgnoreRenderers: []
+  FadeInTime: 0.25
+  FadeOutTime: 0.1
+  progress: 0
+  goal: 0
 --- !u!1 &1697778123066049741
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +403,7 @@ GameObject:
   - component: {fileID: 6187105182038153394}
   - component: {fileID: 944931478660786233}
   - component: {fileID: 4967934447569930234}
+  - component: {fileID: 1942469935793155763}
   m_Layer: 0
   m_Name: Drawer_Bottom
   m_TagString: Untagged
@@ -451,7 +498,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onHoverEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1942469935793155763}
+        m_MethodName: EnableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onHover:
@@ -461,13 +519,29 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onHoverExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1942469935793155763}
+        m_MethodName: DisableGlow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onInteract:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Interactable+UnityInteractableEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onInteractHold:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Interactable+UnityInteractHoldEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &4967934447569930234
 MonoBehaviour:
@@ -484,6 +558,24 @@ MonoBehaviour:
   openDist: 0.4
   openDir: {x: 1, y: 0, z: 0}
   opened: 0
+--- !u!114 &1942469935793155763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697778123066049741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfe5c232e0cdcb4abdb5ac3a0a9cae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+  IgnoreRenderers: []
+  FadeInTime: 0.25
+  FadeOutTime: 0.1
+  progress: 0
+  goal: 0
 --- !u!1 &1697778123066049743
 GameObject:
   m_ObjectHideFlags: 0

@@ -27239,6 +27239,21 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967287
       objectReference: {fileID: 0}
+    - target: {fileID: 2619739565929955957, guid: 9c9c331971cef804cab45f666254011e,
+        type: 3}
+      propertyPath: GlowColor.r
+      value: 0.14509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619739565929955957, guid: 9c9c331971cef804cab45f666254011e,
+        type: 3}
+      propertyPath: GlowColor.g
+      value: 0.43529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619739565929955957, guid: 9c9c331971cef804cab45f666254011e,
+        type: 3}
+      propertyPath: GlowColor.b
+      value: 0.62352943
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c9c331971cef804cab45f666254011e, type: 3}
 --- !u!1001 &595513685
